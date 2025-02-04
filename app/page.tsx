@@ -1,9 +1,13 @@
+import { connection } from "next/server";
+
 async function getServerSideNumber() {
   "use server";
   return Math.floor(Math.random() * 101);
 }
 
 export default async function Home() {
+  await connection();
+
   const number = getServerSideNumber();
 
   return (
